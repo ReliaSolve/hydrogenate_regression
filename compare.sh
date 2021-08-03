@@ -82,7 +82,7 @@ for f in $files; do
   if [ $? -ne 0 ] ; then
     let "failed++"
     echo "Error running on $name ($failed failures out of $count)"
-    cp $errorfile $outfile $ciffile outputs
+    cp $errorfile $outfile outputs
   fi
 
   rm -f $ciffile $outfile $errorfile ${name}_hydrogenate.pdb

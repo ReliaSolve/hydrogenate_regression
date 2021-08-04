@@ -13,6 +13,10 @@
 # The program first uses rsync to pull all of the CIF files into the
 # mmCIF directory (if this has been done before, only changes will be pulled).
 #
+# WARNING: This program deletes each file that it was able to run on
+# successfully, so that repeated runs will not retry the same file over
+# and over.
+#
 #############################################################################
 
 ######################
@@ -21,6 +25,9 @@
 # deciding whether the script should run a file.
 VERBOSE=1
 mkdir -p ./outputs
+
+export LIBTBX_DISABLE_TRACEBACKLIMIT=1
+
 
 MODULO=""
 if [ "$1" != "" ] ; then MODULO="$1" ; fi
@@ -79,10 +86,14 @@ for f in $files; do
 
   # Run on the CIF file.
   mmtbx.hydrogenate $ciffile 2> $errorfile > $outfile
-  if [ $? -ne 0 ] ; then
+  if [ $? -ne 0 ]
+  then
     let "failed++"
     echo "Error running on $name ($failed failures out of $count)"
     cp $errorfile $outfile outputs
+  else
+    # Delete the file so that we won't try it again
+    rm $cname
   fi
 
   rm -f $ciffile $outfile $errorfile ${name}_hydrogenate.pdb

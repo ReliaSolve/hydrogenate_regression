@@ -14,6 +14,7 @@ BehaviorTable = [
   [ re.compile(r".*0 model\(s\) found.*",flags=re.DOTALL), False ],
   [ re.compile(r".*It looks like angle restraints involving.*",flags=re.DOTALL), False ],
   [ re.compile(r".*number of groups of duplicate atom labels.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Conflicting angle restraints.*",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"
@@ -52,7 +53,8 @@ def main():
     if BehaviorTable[i][1]:
       print(f'  (this group should be ignored)')
     else:
-      print(f'  (example file: {next(iter(groups[i]))})')
+      if len(groups[i]) > 0:
+        print(f'  (example file: {next(iter(groups[i]))})')
 
   # Print the unknown group entries.
   print('Unrecognized error types:')

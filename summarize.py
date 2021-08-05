@@ -50,11 +50,11 @@ def main():
   # Print each group, along with whether they should be ignored.
   for i in range(len(BehaviorTable)):
     print(f'Group {i} has {len(groups[i])} entries')
-    if BehaviorTable[i][1]:
-      print(f'  (this group should be ignored)')
-    else:
-      if len(groups[i]) > 0:
-        print(f'  (example file: {next(iter(groups[i]))})')
+    if len(groups[i]) > 0:
+      if BehaviorTable[i][1]:
+        print(f'  (this group should be ignored)')
+      else:
+          print(f'  (example file: {next(iter(groups[i]))})')
 
   # Print the unknown group entries.
   print('Unrecognized error types:')

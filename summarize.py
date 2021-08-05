@@ -4,7 +4,7 @@ from os import walk
 # Contains a regular expression to run on the error file and a Boolean that tells
 # whether to ignore the files that match this regular expression.
 BehaviorTable = [
-  [ re.compile(r".*'<' not supported between instances of 'empty' and 'str'.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*'<' not supported between instances of.*",flags=re.DOTALL), False ],
   [ re.compile(r".*KeyError:.*",flags=re.DOTALL), False ],
   [ re.compile(r".*One or more rotation matrices is not proper.*",flags=re.DOTALL), False ],
   [ re.compile(r".*Unknown chemical element type.*",flags=re.DOTALL), True ],
@@ -51,10 +51,14 @@ def main():
     print(f'Group {i} has {len(groups[i])} entries')
     if BehaviorTable[i][1]:
       print(f'  (this group should be ignored)')
+    else:
+      print(f'  (example file: {next(iter(groups[i]))})')
 
   # Print the unknown group entries.
   print('Unrecognized error types:')
   for u in groups[-1]:
     print(u)
+    print(data[u])
+
 
 main()

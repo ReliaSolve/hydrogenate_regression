@@ -10,11 +10,14 @@ BehaviorTable = [
   [ re.compile(r".*Unknown chemical element type.*",flags=re.DOTALL), True ],
   [ re.compile(r".*CCTBX_ASSERT\(j_sym >= 0\) failure.*",flags=re.DOTALL), False ],
   [ re.compile(r".*Conflicting bond_simple restraints.*",flags=re.DOTALL), False ],
-  [ re.compile(r".*Unit cell volume is incompatible with number of atoms.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Unit cell volume is incompatible with number of atoms.*",flags=re.DOTALL), True ],
   [ re.compile(r".*0 model\(s\) found.*",flags=re.DOTALL), False ],
   [ re.compile(r".*It looks like angle restraints involving.*",flags=re.DOTALL), False ],
   [ re.compile(r".*number of groups of duplicate atom labels.*",flags=re.DOTALL), False ],
   [ re.compile(r".*Conflicting angle restraints.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*'place_hydrogens' object has no attribute 'sl_removed'.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*bond_simple = gpr.bond_simple.proxies\[i_seqs\[k\]\].*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Use 'allow_polymer_cross_special_position=True' to keep going.*",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"
@@ -57,10 +60,11 @@ def main():
           print(f'  (example file: {next(iter(groups[i]))})')
 
   # Print the unknown group entries.
-  print('Unrecognized error types:')
-  for u in groups[-1]:
-    print(u)
-    print(data[u])
+  if len(groups[-1]) > 0:
+    print('Unrecognized error types:')
+    for u in groups[-1]:
+      print(u)
+      print(data[u])
 
 
 main()

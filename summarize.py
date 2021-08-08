@@ -18,6 +18,9 @@ BehaviorTable = [
   [ re.compile(r".*'place_hydrogens' object has no attribute 'sl_removed'.*",flags=re.DOTALL), False ],
   [ re.compile(r".*bond_simple = gpr.bond_simple.proxies\[i_seqs\[k\]\].*",flags=re.DOTALL), False ],
   [ re.compile(r".*Use 'allow_polymer_cross_special_position=True' to keep going.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*'NoneType' object has no attribute 'h_parameterization'.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Bad helix length. Check HELIX records.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*assert cs.space_group\(\) is not None.*",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"

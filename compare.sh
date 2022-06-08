@@ -67,7 +67,7 @@ for f in $files; do
   fi
 
   ##############################################
-  # Now run on on the input file and store its output if we fail.
+  # Now run on the input file and store its output if we fail.
 
   # Get the full mmCIF file name
   d2=`echo $f | cut -d/ -f 2`
@@ -92,7 +92,8 @@ for f in $files; do
     echo "Error running on $name ($failed failures out of $count)"
     cp $errorfile $outfile outputs
   else
-    # Delete the file so that we won't try it again
+    # The file worked fine.
+    # Delete the file so that we won't try it again when we re-run.
     rm $cname
   fi
 

@@ -23,6 +23,7 @@ BehaviorTable = [
   [ re.compile(r".*assert cs.space_group\(\) is not None.*",flags=re.DOTALL), False ],
   [ re.compile(r".*Don't know how to deal with helices with multiple chain IDs.*",flags=re.DOTALL), False ],
   [ re.compile(r".*Anomeric carbon*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Failed to get all the atoms needed for glycosidic bond*",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"

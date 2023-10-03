@@ -24,6 +24,7 @@ BehaviorTable = [
   [ re.compile(r".*Don't know how to deal with helices with multiple chain IDs.*",flags=re.DOTALL), False ],
   [ re.compile(r".*Anomeric carbon*",flags=re.DOTALL), False ],
   [ re.compile(r".*Failed to get all the atoms needed for glycosidic bond*",flags=re.DOTALL), False ],
+  [ re.compile(r".*AttributeError: 'NoneType' object has no attribute 'n_rows'*",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"

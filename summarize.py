@@ -25,6 +25,10 @@ BehaviorTable = [
   [ re.compile(r".*Anomeric carbon*",flags=re.DOTALL), False ],
   [ re.compile(r".*Failed to get all the atoms needed for glycosidic bond*",flags=re.DOTALL), False ],
   [ re.compile(r".*AttributeError: 'NoneType' object has no attribute 'n_rows'*",flags=re.DOTALL), False ],
+  [ re.compile(r".*AttributeError: 'NoneType' object has no attribute 'iterrows'*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: It looks like angle and bond restraints are conflicting.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: Trying to find the linking carbons but could not find*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Generating H restraints from Chemical Componets for.*",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"

@@ -29,6 +29,13 @@ BehaviorTable = [
   [ re.compile(r".*Sorry: It looks like angle and bond restraints are conflicting.*",flags=re.DOTALL), False ],
   [ re.compile(r".*Sorry: Trying to find the linking carbons but could not find*",flags=re.DOTALL), False ],
   [ re.compile(r".*Generating H restraints from Chemical Componets for.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*RuntimeError: Bond distance > max_reasonable_bond_distance*",flags=re.DOTALL), False ],
+  [ re.compile(r".*ValueError: invalid literal for int*",flags=re.DOTALL), False ],
+  [ re.compile(r".*TypeError: bad operand type for abs*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: Unable to determine the linking chiral atoms for atom*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: CDL error: bond not found between*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: Duplicate bond_simple restraints*",flags=re.DOTALL), False ],
+  [ re.compile(r".*CifBuilderError: Space group is incompatible with unit cell*",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"

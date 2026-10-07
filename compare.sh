@@ -97,7 +97,7 @@ for f in $files; do
     rm $cname
   fi
 
-  rm -f $ciffile $outfile $errorfile ${name}_hydrogenate.pdb
+  rm -f $ciffile $outfile $errorfile ${name}_hydrogenate.cif
 
 done
 

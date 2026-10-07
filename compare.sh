@@ -101,6 +101,7 @@ for f in $files; do
 
 done
 
+let "ret=0"
 if [ $failed -ne 0 ]
 then
   echo "$failed files failed out of $count"

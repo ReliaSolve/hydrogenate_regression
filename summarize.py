@@ -36,6 +36,9 @@ BehaviorTable = [
   [ re.compile(r".*Sorry: CDL error: bond not found between*",flags=re.DOTALL), False ],
   [ re.compile(r".*Sorry: Duplicate bond_simple restraints*",flags=re.DOTALL), False ],
   [ re.compile(r".*CifBuilderError: Space group is incompatible with unit cell*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: Restraints were not found for the following residues:.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: It was not possible to place any H atoms.*",flags=re.DOTALL), False ],
+  [ re.compile(r"",flags=re.DOTALL), False ],
 ]
 
 BASEDIR = "outputs"
@@ -75,7 +78,8 @@ def main():
       if BehaviorTable[i][1]:
         print(f'  (this group should be ignored)')
       else:
-          print(f'  (example file: {next(iter(groups[i]))})')
+        print(' ', BehaviorTable[i][0])
+        print(f'  (example file: {next(iter(groups[i]))})')
 
   # Print the unknown group entries.
   if len(groups[-1]) > 0:
@@ -83,6 +87,5 @@ def main():
     for u in groups[-1]:
       print(u)
       print(data[u])
-
 
 main()

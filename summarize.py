@@ -37,7 +37,7 @@ BehaviorTable = [
   [ re.compile(r".*Sorry: Duplicate bond_simple restraints*",flags=re.DOTALL), False ],
   [ re.compile(r".*CifBuilderError: Space group is incompatible with unit cell*",flags=re.DOTALL), False ],
   [ re.compile(r".*Sorry: Restraints were not found for the following residues:.*",flags=re.DOTALL), False ],
-  [ re.compile(r".*Sorry: It was not possible to place any H atoms.*",flags=re.DOTALL), False ],
+  [ re.compile(r".*Sorry: It was not possible to place any H atoms.*",flags=re.DOTALL), True ],
   [ re.compile(r"",flags=re.DOTALL), False ],
 ]
 

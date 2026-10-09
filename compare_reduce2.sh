@@ -84,8 +84,10 @@ for f in $files; do
   errorfile="./${name}_error.txt"
   gunzip < $cname > $ciffile
 
-  # Run on the CIF file.
-  mmtbx.reduce2 add_flip_movers=True stop_on_any_missing_hydrogen=False output.description_file_name=${name}.txt $ciffile 2> $errorfile > $outfile
+  # Run on the CIF file.  Only optimize for at most ten seconds because we just want to know
+  # that it was able to load the file and we don't care about the final answer.  This lets
+  # us run much faster, especially for long-running files (which can take more than 24 hours).
+  mmtbx.reduce2 skip_optimizations_after_seconds=10 add_flip_movers=True stop_on_any_missing_hydrogen=False output.description_file_name=${name}.txt $ciffile 2> $errorfile > $outfile
   if [ $? -ne 0 ]
   then
     let "failed++"

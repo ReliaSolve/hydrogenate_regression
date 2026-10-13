@@ -69,7 +69,7 @@ def main():
       if e[0].match(data[f]):
         indices[f] = i
         break
-    groups[indices[f]].add(f)
+    groups[indices[f]].add(f.split("_", 1)[0])
 
   # Print each group, along with whether they should be ignored.
   for i in range(len(BehaviorTable)):
@@ -79,7 +79,7 @@ def main():
         print(f'  (this group should be ignored)')
       else:
         print(' ', BehaviorTable[i][0])
-        print(f'  (example file: {next(iter(groups[i]))})')
+        print(f'  (files: {groups[i]})')
 
   # Print the unknown group entries.
   if len(groups[-1]) > 0:

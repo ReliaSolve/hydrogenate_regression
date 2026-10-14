@@ -19,18 +19,21 @@
 #
 #############################################################################
 
-######################
-# Parse the command line
-# The first argument, if present, specifies the modulo of 8 to use when
-# deciding whether the script should run a file.
 VERBOSE=1
 mkdir -p ./outputs
 
+######################
+# Parse the command line
+# The first argument, if present, specifies the modulo of 8 to use when
+# deciding whether the script should run a file.  The second argumment, if
+# present specifies the divisor to take the modulo of, default is 8.
+
 export LIBTBX_DISABLE_TRACEBACKLIMIT=1
 
-
+DIVISOR=8
 MODULO=""
 if [ "$1" != "" ] ; then MODULO="$1" ; fi
+if [ "$2" != "" ] ; then DIVISOR="$2" ; fi
 
 ######################
 # Pull the mMCIF files
@@ -41,7 +44,7 @@ if [ "$1" != "" ] ; then MODULO="$1" ; fi
 
 count=0
 failed=0
-files=`cd mmCIF; find . -name \*.gz`
+files=`cd mmCIF; find . -name \*.gz | sort -r`
 for f in $files; do
 
   ##############################################
@@ -87,7 +90,7 @@ for f in $files; do
   # Run on the CIF file.  Only optimize for at most ten seconds because we just want to know
   # that it was able to load the file and we don't care about the final answer.  This lets
   # us run much faster, especially for long-running files (which can take more than 24 hours).
-  mmtbx.reduce2 ignore_missing_restraints=true skip_optimizations_after_seconds=10 add_flip_movers=True stop_on_any_missing_hydrogen=False output.description_file_name=${name}.txt $ciffile 2> $errorfile > $outfile
+  mmtbx.reduce2 add_flip_movers=true ignore_missing_restraints=true stop_on_any_missing_hydrogen=False output.description_file_name=${name}.txt $ciffile 2> $errorfile > $outfile
   if [ $? -ne 0 ]
   then
     let "failed++"

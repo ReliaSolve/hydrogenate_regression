@@ -62,7 +62,7 @@ for f in $files; do
   ##############################################
   # See if our modulo parameter tells us to skip it.
   if [ "$MODULO" != "" ] ; then
-    mod=$(("$count" % 8))
+    mod=$(("$count" % "$DIVISOR"))
     if [ "$mod" -ne "$MODULO" ] ; then
       echo "Skipping $f, modulo = $mod"
       continue

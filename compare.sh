@@ -8,7 +8,7 @@
 # found so that the mp_geo program works.
 #
 # This presumes that you are running in an environment where you have
-# mmtbx.debugging.hydrogenate on your path and have access to the rsync command as well.
+# mmtbx.reduce2 on your path and have access to the rsync command as well.
 #
 # The program first uses rsync to pull all of the CIF files into the
 # mmCIF directory (if this has been done before, only changes will be pulled).
@@ -85,7 +85,7 @@ for f in $files; do
   gunzip < $cname > $ciffile
 
   # Run on the CIF file.
-  mmtbx.debugging.hydrogenate $ciffile 2> $errorfile > $outfile
+  mmtbx.reduce2 approach=place $ciffile 2> $errorfile > $outfile
   if [ $? -ne 0 ]
   then
     let "failed++"
@@ -97,7 +97,7 @@ for f in $files; do
     rm $cname
   fi
 
-  rm -f $ciffile $outfile $errorfile ${name}_hydrogenate.cif
+  rm -f $ciffile $outfile $errorfile ${name}H.cif
 
 done
 

@@ -44,7 +44,7 @@ if [ "$2" != "" ] ; then DIVISOR="$2" ; fi
 
 count=0
 failed=0
-files=`cd mmCIF; find . -name \*.gz | sort -r`
+files=`cd mmCIF; find . -name \*.gz | sort`
 for f in $files; do
 
   ##############################################
